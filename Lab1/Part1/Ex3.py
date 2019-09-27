@@ -1,11 +1,11 @@
-L=[123, ‘spam’, 1.23] # A list of three different-type objects
+L=[123, 'spam', 1.23] # A list of three different-type objects
 len(L) # number of items in the list
 L[0]
 L[:-1] # Slicing a list returns a new list
 L+[4,5,6] # contact/repeat make new lists too
 L*2 # repeat
 L # we are not changing the original list
-M = [‘bb’, ‘aa’, ‘cc’]
+M = ['bb', 'aa', 'cc']
 M.sort()
 M
 M.reverse()

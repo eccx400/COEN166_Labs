@@ -18,6 +18,6 @@ diag
 doubles = [c * 2 for c in 'spam'] 
 doubles
 list(range(4)) # 0..3 (list() required in 3.X)
-list(range(−6, 7, 2)) # −6 to +6 by 2 (need list() in 3.X)
+list(range(-6, 7, 2)) # −6 to +6 by 2 (need list() in 3.X)
 [[x ** 2, x ** 3] for x in range(4)] # Multiple values, “if” filters
-[[x, x/2, x * 2] for x in range(−6, 7, 2) if x > 0] 
+[[x, x/2, x * 2] for x in range(-6, 7, 2) if x > 0] 

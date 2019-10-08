@@ -1,37 +1,50 @@
+import sys
 class VacuumAgent:
  	# def __init__(self)
 	#	self.model = { "Left" : None, "Right" : None, "Current" : None}
-	def action(self, state, location, cost):
+	def action(self, state, location):
 		if state[location] == "Dirty":
 			action = "Suck"
-			cost = cost + 1
 		elif location == 0:
 			action = "Right"
-			cost = cost + 1
 		else:
 			action = "Left"
-			cost = cost + 1
-		return action, cost
+		return action
 
-	def update(self, action, state, location, cost):
+	def update(self, action, state, location):
 		if action == "Suck":
-			state[location] == "Clean"
-
+			print(f'CLEANING location {location}!')
+			state[location] = "Clean"
+			print(state)
 		elif action == "Right":
 			location = 1
 		else:
 			location = 0
 		return state, location
 
-	def result( state):
+	def result(self,state):
+		print("GOING INTO FUNCTION")
 		if state == ["Clean", "Clean"]:
+			print("RESULT IS TRUE. SUCCESS!!")
 			return True
 		else:
+			print("RESULT IS FALSE")
 			return False
 
-	def tester(self, state, location, cost, sequence):
-		if self.result():
-			return sequence
-		action = self.action(state, location, cost)
-		sequence.append(action)
-		state, location = self.update(state, action, location, cost)
+	def tester(self, state, location, sequence):
+		while True:
+			res = self.result(state)
+			print(f"RESULT IS {res}")
+			if res:
+				return sequence
+			'''
+			if self.result(state):
+				print("Result HERE!")
+				return sequence
+			'''
+			action = self.action(state, location)
+			print(f'Action is {action}')
+			sequence.append(action)
+			print("Updating state and location")
+			state, location = self.update(action, state, location)
+			print(f'State is {state} and location is {location}')

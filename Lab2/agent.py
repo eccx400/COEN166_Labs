@@ -1,7 +1,9 @@
 import sys
 class VacuumAgent:
- 	# def __init__(self)
-	#	self.model = { "Left" : None, "Right" : None, "Current" : None}
+
+	def __init__(self):
+		self.cost = 0
+	
 	def action(self, state, location):
 		if state[location] == "Dirty":
 			action = "Suck"
@@ -12,14 +14,19 @@ class VacuumAgent:
 		return action
 
 	def update(self, action, state, location):
+		#global cost
 		if action == "Suck":
 			print(f'CLEANING location {location}!')
 			state[location] = "Clean"
 			print(state)
+			self.cost += 1
 		elif action == "Right":
 			location = 1
+			self.cost += 1
 		else:
 			location = 0
+			self.cost += 1
+		print("The Cost is: ", self.cost)
 		return state, location
 
 	def result(self,state):

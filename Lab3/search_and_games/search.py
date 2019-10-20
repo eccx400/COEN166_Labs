@@ -158,11 +158,24 @@ def iterativeDeepeningSearch(problem):
 
     """
     "*** YOUR CODE HERE ***"
+
+    print("Start:", problem.getStartState())
+    print("Is the start a goal?", problem.goalTest(problem.getStartState()))
+    print("Actions from start state:", problem.getActions(problem.getStartState()))
+
+    problem.getResult(problem.getStartState(), one_of_the_actions)
+    problem.getCost(problem.getStartState(), one_of_the_actions)
+
+    from game import Directions
+
     util.raiseNotDefined()
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
+
+    from game import Directions
+
     util.raiseNotDefined()
 
 # Abbreviations

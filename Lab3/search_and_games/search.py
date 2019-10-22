@@ -154,7 +154,7 @@ def DLS(problem, limit)
     
     while not problem.goalState:
          x = fringe.pop()
-	 visited.append(x)
+	 visit.append(x)
  
          if x.pathCost != limit:
 		for x in problem.getSuccessors(state):

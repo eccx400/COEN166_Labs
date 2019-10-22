@@ -291,13 +291,16 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.startState
+	util.raiseNotDefined()
 
     def goalTest(self, state):
         """
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
+	foundGoal = self.goal = state
+	return foundGoal
         util.raiseNotDefined()
 
     def getActions(self, state):

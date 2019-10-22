@@ -157,8 +157,9 @@ def DLS(problem, limit)
 	 visited.append(x)
  
          if x.pathCost != limit:
-		for x in problem.getSuccessors(state)
-			if (
+		for x in problem.getSuccessors(state):
+			fringe.push(x)
+			visited.append(x[0])
 
 def iterativeDeepeningSearch(problem):
     """
@@ -194,7 +195,7 @@ def iterativeDeepeningSearch(problem):
     limit = 0
     goal = false
 
-    while(true)
+    while(true):
 	n = DLS(problem, limit)
 	limit += 1
 
@@ -206,14 +207,19 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 
     from game import Directions
     fringe = util.priorityQueue((problem.getStartState(), None, None, 0), heuristic(problem.getStartState, problem))
+    node = []    
 
     while True:
 	if fringe.isEmpty():
 		return
 	x = fringe.pop()
-
-
-    util.raiseNotDefined()
+	if problem.isGoalState(x.state):
+		return x.path()
+	for state, cost, action in problem.getSuccessor(state):
+		fringe.push(problem.state, heuristic(x.state, problem))
+		node[x.state] = x	
+		
+    utilraiseNotDefined()
 
 # Abbreviations
 bfs = breadthFirstSearch

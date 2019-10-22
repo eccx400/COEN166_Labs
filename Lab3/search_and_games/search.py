@@ -137,6 +137,28 @@ def nullHeuristic(state, problem=None):
     """
     return 0
 
+
+def rDLS(problem, limit)
+    from game import Directions
+
+    fringe = util.Stack(node.Node(problem.getStartState(), None, None, 0))
+    if problem.goalTest(problem.getStartState())):
+	
+	return True
+
+    if limit <= 0:
+	return False
+
+    adj = problem.getSuccessors(state)
+    visit = []
+    
+    while not problem.goalState:
+         x = fringe.pop()
+	 visited.append(x)
+ 
+         if x.pathCost != limit:
+		for x in 
+
 def iterativeDeepeningSearch(problem):
     """
     Perform DFS with increasingly larger depth. Begin with a depth of 1 and increment depth by 1 at every step.
@@ -168,6 +190,9 @@ def iterativeDeepeningSearch(problem):
 
     from game import Directions
 
+    limit = 0
+    goal = false
+
     util.raiseNotDefined()
 
 def aStarSearch(problem, heuristic=nullHeuristic):
@@ -175,6 +200,13 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     "*** YOUR CODE HERE ***"
 
     from game import Directions
+    fringe = util.priorityQueue((problem.getStartState(), None, None, 0), heuristic(problem.getStartState, problem))
+
+    while True:
+	if fringe.isEmpty():
+		return
+	x = fringe.pop()
+
 
     util.raiseNotDefined()
 

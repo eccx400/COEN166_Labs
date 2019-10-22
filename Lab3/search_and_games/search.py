@@ -138,7 +138,7 @@ def nullHeuristic(state, problem=None):
     return 0
 
 
-def rDLS(problem, limit)
+def DLS(problem, limit)
     from game import Directions
 
     fringe = util.Stack(node.Node(problem.getStartState(), None, None, 0))
@@ -157,7 +157,8 @@ def rDLS(problem, limit)
 	 visited.append(x)
  
          if x.pathCost != limit:
-		for x in 
+		for x in problem.getSuccessors(state)
+			if (
 
 def iterativeDeepeningSearch(problem):
     """
@@ -192,6 +193,10 @@ def iterativeDeepeningSearch(problem):
 
     limit = 0
     goal = false
+
+    while(true)
+	n = DLS(problem, limit)
+	limit += 1
 
     util.raiseNotDefined()
 

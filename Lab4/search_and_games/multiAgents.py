@@ -178,12 +178,43 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
 	GameState.generateSuccessor.
         """
         "*** YOUR CODE HERE ***"
+	for legal in gameState.getLegalActions():
+		if legal != Directions.STOP:
+			nextLevel = gameState.generateSuccessor(0, legal)
+			score = max(score, getMin(nextLevel, self.depth, 1))
 
-	def getMax()
+			older = score
+		if score > older:
+			gameState.getLegalActions() = legal
 
-	def getMin()
+		else:
+			gameState.getLegalActions().remove(Directions.STOP)
 
-        util.raiseNotDefined()
+		return score
+
+  	
+   	ghost = gameState.getNumAgents() - 1
+	if(state.isWin() or state.isLose() or depth == 0):
+		return self.evaluationFunction(state)
+   
+	def getMax(self, state, depth)
+   		score = float("-inf")
+
+   		for nextLev in state.getLegalActions(0):
+			score = max(score, getMin(state.generateSuccessor(0, nextLev), depth - 1, 1))
+
+		return score
+   
+   	def getMin(self, state, depth, agentNum)
+		score = float("inf")
+	
+		if agentNum == ghost:
+			for legal in state.getLegalActions(agentNum):
+				score = min(score, getMax(state.generateSuccessor(agentNum, legal), depth - 1))
+			else:
+				score = min(score, getMin(state.generateSuccessor(agentNum, legal), depth, agentNum + 1))
+
+		return score
 
 def betterEvaluationFunction(currentGameState):
     """

@@ -83,7 +83,7 @@ class ReflexAgent(Agent):
 	limit = 99999
 
 	if successorGameState.isWin():
-		return float("inf") - 20
+		return max(score)
 
 	for x in foodArr:
 		dots = util.manhattanDistance(x, newPos)

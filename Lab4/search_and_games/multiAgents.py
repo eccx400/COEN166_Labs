@@ -76,15 +76,29 @@ class ReflexAgent(Agent):
         "*** YOUR CODE HERE ***"
 	foodArr = newFood.asList()
 
-	manDis = util.manhattanDistance(ghostPosition, newPos)
-	curpos = currentGameState.getGhostPosition(1)
+	curPos = currentGameState.getGhostPosition(1)	
+	manDis = util.manhattanDistance(curPos, newPos)
 
-	score = max(manDis, 3) + successorGameState.getScore()
+	score = manDis + successorGameState.getScore()
+	limit = 99999
 
 	if successorGameState.isWin():
 		return float("inf") - 20
 
-        return successorGameState.getScore()
+	for x in foodArr:
+		dots = util.manhattanDistance(x, newPos)
+		if( dots < limit):
+			limit = dots
+			lefood = foodPos
+	 
+	if newPos in currentGameState.getCapsules():
+		score = score + 100
+
+	if manDis <= 2 && newScaredTimes [0] == 0:
+		score = -99999
+	else
+		score = score + 200
+        return score
 
 def scoreEvaluationFunction(currentGameState):
     """
@@ -152,8 +166,23 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
 
         All ghosts should be modeled as choosing uniformly at random from their
         legal moves.
+
+	The correct implementation of minimax will lead to Pacman winning the game in some tests, but
+	it will also lead to Pacman losing the game in some tests.
+		• The evaluation function for the pacman test in this part is already written
+	(self.evaluationFunction). You shouldn't change this function, but recognize that now we have
+	“Look-ahead” agents that evaluate future states whereas reflex agents evaluate actions from the
+	current state.
+		• Pacman is always agent 0, and the agents move in order of increasing agent index.
+		• All states in minimax should be GameStates, either passed in to getAction or generated via
+	GameState.generateSuccessor.
         """
         "*** YOUR CODE HERE ***"
+
+	def getMax()
+
+	def getMin()
+
         util.raiseNotDefined()
 
 def betterEvaluationFunction(currentGameState):

@@ -94,7 +94,7 @@ class ReflexAgent(Agent):
 	if newPos in currentGameState.getCapsules():
 		score = score + 100
 
-	if manDis <= 2 && newScaredTimes [0] == 0:
+	if manDis <= 2 and newScaredTimes [0] == 0:
 		score = -99999
 	else
 		score = score + 200

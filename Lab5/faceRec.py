@@ -3,8 +3,11 @@
 import cv2
 import numpy as np
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+training = []
+testing = []
 
-img = cv2.imread('sachin.jpg')
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+path = '/home/echeng/Documents/COEN166/Lab5/att_faces_10/att_faces_10/s1/1.pgm'
+img = cv2.imread(path)
+
+cv2.imshow('image', img)
+cv2.waitKey(0)

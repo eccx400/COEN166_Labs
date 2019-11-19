@@ -106,7 +106,11 @@ for rank in K:
 		find_pred = Counter(sumNum)
 		mostNum = max(find_pred.items(), key = operator.itemgetter(1))[0]
 
-					
+		if(int(os.path.basename(os.path.split(image)[0])[1:]) == mostNum):
+			hit += 1
+
+	hitrate = hit / total
+	print("The Rank " + rank + "\t Hitrate: " + hitrate)				
 	
 ##Demo Purposes
 #path = '/home/echeng/Documents/COEN166/Lab5/att_faces_10/att_faces_10/s1/1.pgm'

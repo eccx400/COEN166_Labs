@@ -109,6 +109,7 @@ for rank in K:
 		if(int(os.path.basename(os.path.split(image)[0])[1:]) == mostNum):
 			hit += 1
 
+	# Find recognition accuracy rate for different K values
 	hitrate = hit / total
 	print("The Rank " + rank + "\t Hitrate: " + hitrate)				
 	

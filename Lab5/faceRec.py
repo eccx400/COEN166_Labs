@@ -5,6 +5,8 @@ import numpy as np
 import operator
 import os.path
 from collections import Counter
+import numpy.matlib as ml
+import numpy.linalg as la
 import glob
 import sys
 import pprint
@@ -47,13 +49,41 @@ print("All Files Added")
 train = []
 for path in training:
 	img = cv2.imread(path)
+	img = img[:, :, 2]
+	img = img.flatten()
 	train.append(img)
 
+train = np.transpose(train)
+train_mean = train.mean(1)
+repMean = ml.repmat(train_mean, 60, 1)
+transMean = np.transpose(repMean)
+
+train = train - transMean
+
+#DO SVD
+u ,s ,v = la.svd(train)
+print("SVD done")
 
 K = [ 1, 2, 3, 6, 10 ,20 ,30]
 
-#for rank in K:
+
+for rank in K:
+	hitrate = 0;
+	total = 0;
 	
+	sub = (u[0 : k, :])
+	sub = np.transpose(u[:, 0 : k]
+	proj = sub.dot(train)	
+	
+	for image in testing:
+		total += 1
+		
+		img2 = cv2.imread(image)
+		img2 = img2[:, :, 2]
+		img2 = img2.flatten()
+		img2 -= train_mean
+
+		projection = sub.dot(img2)	
 ##Demo Purposes
 #path = '/home/echeng/Documents/COEN166/Lab5/att_faces_10/att_faces_10/s1/1.pgm'
 #img = cv2.imread(path)

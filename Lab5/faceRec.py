@@ -3,6 +3,7 @@
 import cv2
 import numpy as np
 import operator
+import dot
 import os.path
 from collections import Counter
 import numpy.matlib as ml
@@ -70,6 +71,8 @@ K = [ 1, 2, 3, 6, 10 ,20 ,30]
 for rank in K:
 	hitrate = 0;
 	total = 0;
+	subNum = []
+	minimum = []
 	
 	sub = (u[0 : k, :])
 	sub = np.transpose(u[:, 0 : k]
@@ -83,7 +86,28 @@ for rank in K:
 		img2 = img2.flatten()
 		img2 -= train_mean
 
-		projection = sub.dot(img2)	
+		projection = sub.dot(img2)
+		repTest = np.transpose(ml.repmat(projection, 60, 1))	
+		
+		norMol = repTest - proj
+		norm = la.norm(norMol, axis = 0)
+		kNeighbors =  np.argsort(norm)
+		minInd = kNeighbors.argsort()
+
+		minInd = minInd.tolist()
+
+		for index in minInd:
+			if index < rank:
+				minimum.append(minIndex.index(index))
+		
+		for index in minimum:
+			sumNum.append(int(index / 6) + 1)
+
+		find_pred = Counter(sumNum)
+		mostNum = max(find_pred.items(), key = operator.itemgetter(1))[0]
+
+					
+	
 ##Demo Purposes
 #path = '/home/echeng/Documents/COEN166/Lab5/att_faces_10/att_faces_10/s1/1.pgm'
 #img = cv2.imread(path)

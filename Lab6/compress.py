@@ -23,7 +23,8 @@ model.add(layers.Dense(784))
 model.add(layers.Reshape((28, 28)))
 
 model.compile(loss= 'mean_squared_error', metrics= ['accuracy'])
-model.fit(train_images, train_images, epochs=1, batch_size = 64)
+model.fit(train_images, train_images, epochs=10, batch_size = 64)
 model_loss, model_acc = model.evaluate(test_images, test_images)
 
-model.summary()                                 
+model.summary()
+~                                   
